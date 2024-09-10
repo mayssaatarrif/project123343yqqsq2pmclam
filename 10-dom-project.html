@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects</title>
+    <style>
+      body{
+        font-family: Arial;
+      }
+      .css-button{
+        background: black;
+        color: white;
+        border-radius: 25px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-right: 15px;
+        padding-left: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 28px;
+      }
+      .is-subscribed{
+        background: #f0f0f0;
+        color: black;
+        border: none;
+      }
+      .css-input{
+        padding: 15px;
+        font-size: 15px;
+      }
+      .calculate-button{
+        background: #00b300;
+        padding: 17px 16px;
+        color: white;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+   <p>Youtube Subscribe Button</p>
+   <button id = "Subscribe" class="js-button css-button" >Subscribe</button>
+   <p>Amazon Shipping Calculator</p>
+   <input placeholder="Cost of order" class="js-cost css-input">
+   <button id="Calculate" class="calculate-button">Calculate</button>
+   <p class="js-total-cost"></p>
+    <script>
+      document.getElementById('Subscribe').addEventListener('click',function(){
+        const buttonElement=  document.querySelector('.js-button');
+        if(buttonElement.innerText === "Subscribe"){
+            buttonElement.innerHTML ='Subscribed';
+            buttonElement.classList.add('is-subscribed');
+        }
+        else{
+            buttonElement.innerHTML = 'Subscribe';
+            buttonElement.classList.remove('is-subscribed');
+        }
+      });
+      function calculateTotal(){
+        const cost = document.querySelector('.js-cost');
+        let sum = Number(cost.value);
+        
+        if (sum < 40){
+          sum = sum + 10; 
+        }
+        document.querySelector('.js-total-cost')
+        .innerHTML = `$${sum}`;
+        
+      }
+      document.getElementById('Calculate').addEventListener('keydown',function(){
+        if(event.key==='Enter')
+        calculateTotal();
+      });
+
+          </script>
+  </body>
+</html>
